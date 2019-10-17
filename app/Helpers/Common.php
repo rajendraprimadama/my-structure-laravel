@@ -35,7 +35,7 @@ class Common
     {
         try{
             switch (env('APP_ENV')) {
-                case 'development':
+                case 'local':
                     return self::tableDevelopment();
                     break;
                 case 'production':
@@ -53,7 +53,9 @@ class Common
 
     public static function tableDevelopment()
     {
-        return [];
+        return [
+            'Master_BackendMenu',
+        ];
     }
 
     public static function tableProduction()

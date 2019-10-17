@@ -3,12 +3,8 @@
 use Illuminate\Support\Str;
 
 switch (env('APP_ENV')) {
-    case 'local' :
+    case 'development' :
         $default_connection = 'local_development';
-        break;
-    
-    case 'staging' :
-        $default_connection = 'local_staging';
         break;
 
     case 'production' :
@@ -129,7 +125,7 @@ return [
         #endregion local connection
 
         #region other connection
-        'other_development' => [
+        'local_production' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST_OTHER_DEVELOPMENT', '127.0.0.1'),
             'port' => env('DB_PORT_OTHER_DEVELOPMENT', '3306'),
