@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
-// use Illuminate\Http\Request;
 use Hashids\Hashids;
 use DB;
-// use menu ??
 
 class BaseController extends Controller
 {
@@ -20,7 +18,7 @@ class BaseController extends Controller
     protected function __construct() {
         #for controller
         $this->request  = request();
-        $this->db       = DB::connection(\Common::connection('local'));
+        $this->db       = DB::connection(\Common::connection('development'));
         $this->hashids  = new Hashids();
         $this->link     = new \Link();
         $this->limit    = 20;
