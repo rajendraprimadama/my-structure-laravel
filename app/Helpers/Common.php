@@ -55,6 +55,7 @@ class Common
     {
         return [
             'Master_BackendMenu',
+            'Master_Menu'
         ];
     }
 

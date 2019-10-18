@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMasterBackendMenuTable extends Migration
+class CreateMasterMenuTable extends Migration
 {
     protected $schema;
     protected $table;
 
     public function __construct(){
         $this->schema = Schema::connection(\Common::connection('local'));
-        $this->table = 'Master_BackendMenu';
+        $this->table = 'Master_Menu';
     }
 
     public function up()
@@ -20,8 +20,9 @@ class CreateMasterBackendMenuTable extends Migration
             $this->schema->create($this->table, function (Blueprint $table) {
                 $table->collation = 'utf8_general_ci';
                 $table->charset = 'utf8';
-                $table->increments('IndexBackendMenu');
+                $table->increments('IndexMenu');
                 $table->string('MenuName',150);
+                $table->enum('Category',['FRONTEND','BACKEND']);
                 $table->integer('MenuParent');
                 $table->string('MenuUrl',150)->default('#');
                 $table->string('Target',15)->default('_self');
@@ -33,9 +34,9 @@ class CreateMasterBackendMenuTable extends Migration
                 $table->datetime('CreatedDate');
                 $table->string('CreatedByID', 50);
                 $table->string('CreatedByName', 200);
-                $table->dateTime('UpdatedDate')->nullable();
-                $table->string('UpdatedByID', 50)->nullable();
-                $table->string('UpdatedByName', 200)->nullable();
+                $table->dateTime('UpdatedDate');
+                $table->string('UpdatedByID', 50);
+                $table->string('UpdatedByName', 200);
             });
         }
     }
